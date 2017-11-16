@@ -12,16 +12,16 @@ class ContactForm extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $message;
+    public $contactMessage;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($message)
+    public function __construct(Message $contactMessage)
     {
-        $this->message = $message;
+        $this->contactMessage = $contactMessage;
     }
 
     /**
@@ -31,7 +31,7 @@ class ContactForm extends Mailable
      */
     public function build()
     {
-        return $this->from($this->message)
+        return $this->from($this->contactMessage->email)
                     ->view('emails.contact_form');
     }
 }
