@@ -111,43 +111,53 @@
             </div>
         </div>
 
-                <form class="form-horizontal" action="{{route('message')}}" method="post">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <div class="form-group">
-                        <label for="full_name" class="col-sm-2 control-label">Full Name</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Ada Lovelace">
-                        </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <form class="form-horizontal" action="{{route('message')}}" method="post">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="form-group">
+                    <label for="full_name" class="col-sm-2 control-label">Full Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Ada Lovelace">
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label for="email" class="col-sm-2 control-label">Email</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="email" name="email" placeholder="ada@lovelace.io">
-                        </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="ada@lovelace.io">
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label for="telephone" class="col-sm-2 control-label">Telephone</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="telephone" name="telephone" placeholder="333-456-1800">
-                            <small class="form-text">Optional</small>
-                        </div>
+                <div class="form-group">
+                    <label for="telephone" class="col-sm-2 control-label">Telephone</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="telephone" name="telephone" placeholder="333-456-1800">
+                        <small class="form-text">Optional</small>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label for="message" class="col-sm-2 control-label">Message</label>
-                        <div class="col-sm-8">
-                            <textarea class="form-control" id="message" name="message" rows="3" placeholder="Hi! Nice to meet you."></textarea>
-                        </div>
+                <div class="form-group">
+                    <label for="message" class="col-sm-2 control-label">Message</label>
+                    <div class="col-sm-8">
+                        <textarea class="form-control" id="message" name="message" rows="3" placeholder="Hi! Nice to meet you."></textarea>
                     </div>
+                </div>
 
-                    <button type="submit" class="btn btn-default">Sumbit</button>
+                <button type="submit" class="btn btn-default">Submit</button>
 
 
-                    
+                
 
-                </form>
+            </form>
 
     </section>
 
