@@ -7,9 +7,17 @@ use App\Message;
 use Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
+use View;
 
 class MessageController extends Controller
 {
+    public function index() 
+    {
+        $messages = Message::all();
+        
+        return View::make('message.index')->with(array('messages' => $messages));
+    }
+
     public function store(Request $request) 
     {
         $validator = Validator::make($request->all(), [
@@ -32,7 +40,7 @@ class MessageController extends Controller
         if($message->save()) {
             //Send notificaiton email with input.
             
-            return Redirect::to('/')->with('message', "Your message has been sent!")->with('alert-class', "alert-success");
+            return Redirect::to('/#contact')->with('message', "Your message has been sent!")->with('alert-class', "alert-success");
 
         }
     }

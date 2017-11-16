@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('messages', 'MessageController@index')->name('messages'); 
 Route::post('message', 'MessageController@store')->name('message'); 

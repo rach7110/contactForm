@@ -121,6 +121,12 @@
                 </div>
             @endif
 
+            @if(session()->has('message'))
+                <div class="alert {{ session('alert-class') }}"> 
+                    {!! session('message') !!}
+                </div>
+            @endif
+
             <form class="form-horizontal" action="{{route('message')}}" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
