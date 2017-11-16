@@ -13,9 +13,9 @@ class MessageController extends Controller
     public function store(Request $request) 
     {
         $validator = Validator::make($request->all(), [
-            'full_name' => 'required|max:255',
-            'email'     => 'required|email|max:255',
-            'message'   => 'required'
+            'full_name'     => 'required|max:255',
+            'email'         => 'required|email|max:255',
+            'description'   => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -23,7 +23,17 @@ class MessageController extends Controller
         }
 
         //Store input into database.
+        $message = new Message;
+        $message->full_name = $request->full_name;
+        $message->email = $request->email;
+        $message->telephone = $request->telephone;
+        $message->description = $request->description;
 
-        //Send notificaiton email with input.
+        if($message->save()) {
+            //Send notificaiton email with input.
+            
+            return Redirect::to('/')->with('message', "Your message has been sent!")->with('alert-class', "alert-success");
+
+        }
     }
 }
