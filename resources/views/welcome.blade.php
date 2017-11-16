@@ -10,19 +10,17 @@
     <meta name="author" content="">
 
     <title>Dealer Inspire Code Challenge</title>
-    <!-- Test CSS -->
-    <link href="{{asset('css/style.css')}}" rel="stylesheet">
-
     <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
     <!-- Theme CSS -->
-    <link href="css/grayscale.min.css" rel="stylesheet">
+    <link href="{{asset('css/grayscale.min.css')}}" rel="stylesheet">
 
 </head>
 
@@ -159,10 +157,10 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="vendor/jquery/jquery.js"></script>
+    <script src="{{asset('js/jquery.js')}}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
 
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
@@ -171,7 +169,8 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
 
     <!-- Theme JavaScript -->
-    <script src="js/grayscale.min.js"></script>
+    <script src="{{asset('js/grayscale.min.js')}}"></script>
+
 
 </body>
 
