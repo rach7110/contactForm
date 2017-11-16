@@ -7,7 +7,9 @@ use App\Message;
 use Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Mail;
 use View;
+use App\Mail\ContactForm;
 
 class MessageController extends Controller
 {
@@ -38,7 +40,8 @@ class MessageController extends Controller
         $message->description = $request->description;
 
         if($message->save()) {
-            //Send notificaiton email with input.
+            //Send notificaiton email.
+            Mail::to('guy-smiley@example.com')->send(new ContactForm($message));
             
             return Redirect::to('/#contact')->with('message', "Your message has been sent!")->with('alert-class', "alert-success");
 
