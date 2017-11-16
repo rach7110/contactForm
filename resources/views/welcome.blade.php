@@ -146,9 +146,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="message" class="col-sm-2 control-label">Message</label>
+                    <label for="description" class="col-sm-2 control-label">Message</label>
                     <div class="col-sm-8">
-                        <textarea class="form-control" id="message" name="message" rows="3" placeholder="Hi! Nice to meet you."></textarea>
+                        <textarea class="form-control" id="description" name="description" rows="3" placeholder="Hi! Nice to meet you."></textarea>
                     </div>
                 </div>
 
