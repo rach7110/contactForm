@@ -41,10 +41,13 @@ class MessageController extends Controller
 
         if($message->save()) {
             //Send notificaiton email.
-            Mail::to('guy-smiley@example.com')->send(new ContactForm($message));
+            $sent = Mail::to('guy-smiley@example.com')->send(new ContactForm($message));                
             
-            return Redirect::to('/#contact')->with('message', "Your message has been sent!")->with('alert-class', "alert-success");
-
+            if($sent) {
+                return Redirect::to('/#contact')->with('message', "Your message has been sent!")->with('alert-class', "alert-success");            
+            }
+        } else {
+                return Redirect::to('/#contact')->with('message', "Problem sending your message. Please try again later.")->with('alert-class', "alert-warning";
         }
     }
 }
