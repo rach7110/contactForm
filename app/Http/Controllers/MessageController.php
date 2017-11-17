@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Mail;
 use View;
 use App\Mail\ContactForm;
-use App\Http\Requests\StoreContactMessage;
+use App\Http\Requests\StoreContactForm;
 
 class MessageController extends Controller
 {
@@ -21,7 +21,7 @@ class MessageController extends Controller
         return View::make('message.index')->with(array('messages' => $messages));
     }
 
-    public function store(StoreContactMessage $request) 
+    public function store(StoreContactForm $request) 
     {
         //Store input into database.
         $message = new Message;

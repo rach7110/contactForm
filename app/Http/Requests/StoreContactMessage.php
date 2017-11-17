@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreContactMessage extends FormRequest
+class StoreContactForm extends FormRequest
 {
       /**
      * The URI to redirect to if validation fails.
