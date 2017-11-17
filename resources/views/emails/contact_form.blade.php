@@ -4,5 +4,5 @@
 <p>Telephone: {{$contactMessage->telephone}}</p>
 <p>Message:</p>
 <div>
-    {{$contactMessage->telephone}}
+    <p>{{$contactMessage->description}}</p>
 </div>
