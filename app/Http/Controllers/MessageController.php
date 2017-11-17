@@ -47,7 +47,7 @@ class MessageController extends Controller
                 return Redirect::to('/#contact')->with('message', "Your message has been sent!")->with('alert-class', "alert-success");            
             }
         } else {
-                return Redirect::to('/#contact')->with('message', "Problem sending your message. Please try again later.")->with('alert-class', "alert-warning";
+                return Redirect::to('/#contact')->with('message', "Problem sending your message. Please try again later.")->with('alert-class', "alert-warning");
         }
     }
 }
