@@ -16,11 +16,11 @@ class ContactFormRequestTest extends TestCase
         $this->rules = $this->validation->rules();
    }
 
-    public function required($rule) {        
-        if(strpos($rule, 'required') >= 0) {
-          return $is_required = true;  
+    public function status($rule, $level) {        
+        if(strpos($rule, $level) >= 0) {
+          return $status = true;  
         } else {
-          return $is_required = false;  
+          return $status = false;  
         }
     }
 
@@ -28,7 +28,7 @@ class ContactFormRequestTest extends TestCase
     {
         $rules = $this->rules;
         $rule = $rules['full_name'];
-        $is_required = $this->required($rule);
+        $is_required = $this->status($rule, 'required');
 
         $this->assertEquals(true, $is_required);
     }
@@ -37,7 +37,7 @@ class ContactFormRequestTest extends TestCase
     {
         $rules = $this->rules;
         $rule = $rules['email'];
-        $is_required = $this->required($rule);
+        $is_required = $this->status($rule, 'required');
 
         $this->assertEquals(true, $is_required);
     }
@@ -46,12 +46,18 @@ class ContactFormRequestTest extends TestCase
     {
         $rules = $this->rules;
         $rule = $rules['description'];
-        $is_required = $this->required($rule);
+        $is_required = $this->status($rule, 'required');
 
         $this->assertEquals(true, $is_required);
     }
 
-    // public function testAllowsOptionalParamaters()
-    // {}
+    public function testTelephoneIsOptionalInContactForm()
+    {
+        $rules = $this->rules;
+        $rule = $rules['telephone'];
+        $is_optional = $this->status($rule, 'nullable');
+
+        $this->assertEquals(true, $is_optional);
+    }
 
 }
