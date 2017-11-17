@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Mail;
 use View;
 use App\Mail\ContactForm;
+use App\Http\Requests\StoreContactMessage;
 
 class MessageController extends Controller
 {
@@ -20,18 +21,8 @@ class MessageController extends Controller
         return View::make('message.index')->with(array('messages' => $messages));
     }
 
-    public function store(Request $request) 
+    public function store(StoreContactMessage $request) 
     {
-        $validator = Validator::make($request->all(), [
-            'full_name'     => 'required|max:255',
-            'email'         => 'required|email|max:255',
-            'description'   => 'required'
-        ]);
-
-        if ($validator->fails()) {
-            return Redirect::to(URL::previous() . "#contact")->withErrors($validator)->withInput();
-        }
-
         //Store input into database.
         $message = new Message;
         $message->full_name = $request->full_name;
@@ -45,6 +36,8 @@ class MessageController extends Controller
             
             if($sent) {
                 return Redirect::to('/#contact')->with('message', "Your message has been sent!")->with('alert-class', "alert-success");            
+            } else {
+                   return Redirect::to('/#contact')->with('message', "Problem sending your message. Please try again later.")->with('alert-class', "alert-warning");
             }
         } else {
                 return Redirect::to('/#contact')->with('message', "Problem sending your message. Please try again later.")->with('alert-class', "alert-warning");
